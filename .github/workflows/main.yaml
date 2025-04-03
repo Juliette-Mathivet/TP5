@@ -21,8 +21,6 @@ jobs:
         run: |
           python server.py &
           echo "Waiting for Flask server to start"
-          sleep 30
       - name: Tests de charge
         run: |
-          locust --host http://127.0.0.1:5000
-          locust -f locustfile.py --headless -u 10000 -r 100 --run-time 120
+          locust -f locustfile.py --headless -u 10000 -r 100 --run-time 120 --host http://127.0.0.1:5000
